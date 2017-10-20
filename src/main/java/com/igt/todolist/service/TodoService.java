@@ -11,7 +11,7 @@ public interface TodoService {
 
 	public TodoItem create(TodoItem item);
 
-	public TodoItem update(TodoItem item);
+	public TodoItem update(String id);
 
 	public TodoItem delete(String id);
 

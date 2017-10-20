@@ -9,7 +9,6 @@ public class TodoItem {
 	private String id;
 	@NotNull
 	private String title;
-	private String description;
 	private Boolean completed = false;
 
 	
@@ -17,11 +16,10 @@ public class TodoItem {
 		super();
 	}
 
-	public TodoItem(String id, String title, String description, boolean completed) {
+	public TodoItem(String id, String title, boolean completed) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.description = description;
 		this.completed = completed;
 	}
 
@@ -49,11 +47,4 @@ public class TodoItem {
 		this.completed = completed;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 }

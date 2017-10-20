@@ -24,10 +24,10 @@ public class TodoServiceImpl implements TodoService {
 		return dao.create(item);
 	}
 
-	public TodoItem update(TodoItem item) {
-		TodoItem todo = dao.update(item);
+	public TodoItem update(String id) {
+		TodoItem todo = dao.update(id);
 		
-		failIfNull(item.getId(), todo);
+		failIfNull(id, todo);
 		
 		return todo;
 	}

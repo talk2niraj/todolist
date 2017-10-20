@@ -1,4 +1,4 @@
-package com.igt.todolist.config;
+/*package com.igt.todolist.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,4 +32,4 @@ public class SwaggerConfig {
                 "https://www.apache.org/licenses/LICENSE-2.0");
         return apiInfo;
     }
-}
+}*/

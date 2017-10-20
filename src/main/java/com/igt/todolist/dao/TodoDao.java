@@ -14,5 +14,5 @@ public interface TodoDao {
  
     TodoItem findById(String id);
  
-    TodoItem update(TodoItem todo);
+    TodoItem update(String id);
 }

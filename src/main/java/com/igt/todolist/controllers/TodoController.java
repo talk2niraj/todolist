@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.igt.todolist.service.TodoService;
 @SuppressWarnings({ "rawtypes", "unchecked" })
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin
 public class TodoController {
 	@Autowired
 	private final TodoService service;
@@ -30,14 +32,13 @@ public class TodoController {
     
 	@PostMapping("/create/todo")
 	public ResponseEntity createTodoItem(@RequestBody TodoItem item) {
-		return new ResponseEntity(service.create(item), HttpStatus.OK);
+		return new ResponseEntity(service.create(item), HttpStatus.CREATED);
 	}
 	
 	
 	@PutMapping("/update/todo/{id}")
-	public ResponseEntity updateTodoItem(@RequestBody TodoItem item, @PathVariable (required = true) String id) {
-		item.setId(id);
-		return new ResponseEntity(service.update(item), HttpStatus.OK);
+	public ResponseEntity updateTodoItem(@PathVariable (required = true) String id) {
+		return new ResponseEntity(service.update(id), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete/todo/{id}")
