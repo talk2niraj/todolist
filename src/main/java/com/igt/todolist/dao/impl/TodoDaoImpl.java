@@ -1,7 +1,7 @@
 package com.igt.todolist.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.igt.todolist.dao.TodoDao;
 import com.igt.todolist.models.TodoItem;
@@ -9,7 +9,7 @@ import com.igt.todolist.repository.TodoRepository;
 
 import java.util.List;
  
-@Service
+@Component
 final class TodoDaoImpl implements TodoDao {
  
     private final TodoRepository repository;
@@ -52,9 +52,12 @@ final class TodoDaoImpl implements TodoDao {
     public TodoItem update(String id) {
     	TodoItem todo = repository.findOne(id);
     	
-    	todo.setCompleted(!todo.isCompleted());
+    	if (todo != null) {
+    		todo.setCompleted(!todo.isCompleted());
+    		return repository.save(todo);
+    	}
     	
-        return repository.save(todo);
+    	return todo;
     }
  
 }
